@@ -2,17 +2,17 @@
 ---
 - useless mini projects
 
-# Why?
+## Why?
 ---
 - want to spend spare time with coding
 - want to challange myself
 - because I'm bored
 
-# how?
+## how?
 ---
 - just clone it!
 
-# TODO
+## TODO
 ---
 
 ```bash
