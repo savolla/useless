@@ -1,7 +1,7 @@
 /*
-	project: console clock
-	author: savolla
-	date: 19/06/2019
+  project: console clock
+  author: savolla
+  date: 19/06/2019
 */
 #include <iostream>
 #include <chrono>
@@ -24,26 +24,24 @@ unsigned char watch[11][19] {
 {' ',' ',' ',' ',' ','7',' ',' ',' ',' ',' ',' ',' ','5',' ',' ',' ',' '},
 {' ',' ',' ',' ',' ',' ',' ',' ',' ','6',' ',' ',' ',' ',' ',' ',' ',' '}};
 
-void updateGraphicalClock(int hour, int minute, int second)
-{
+void updateGraphicalClock(int hour, int minute, int second) {
 /*
- Map of graphical clock
-------------------------
- 0123456789ABCDEFGH 
-0         C                            
-1     B   o   1      
-2      o  *  o        
-3  Ao   * + *   o2   
-4    * + + + + *         
-5 9o*+    x    +*o3  
-6    * + + + + *                       
-7  8o   * + *   o4   
-8      o  *  o       
-9     7   o   5      
-A         6          
+  Map of graphical clock
+  ------------------------
+  0123456789ABCDEFGH
+  0         C
+  1     B   o   1
+  2      o  *  o
+  3  Ao   * + *   o2
+  4    * + + + + *
+  5 9o*+    x    +*o3
+  6    * + + + + *
+  7  8o   * + *   o4
+  8      o  *  o
+  9     7   o   5
+  A         6
 */                                    
-	switch(second)
-	{
+	switch(second) {
 		case 0: {watch[2][6] =' ';watch[1][9] ='o';}break;
 		case 5: {watch[1][9] =' ';watch[2][12]='o';}break;
 		case 10:{watch[2][12]=' ';watch[3][15]='o';}break; 
@@ -58,8 +56,7 @@ A         6
 		case 55:{watch[3][3] =' ';watch[2][6] ='o';}break;
 		default:; break;
 	}
-	switch(minute)
-	{
+	switch(minute) {
 		case 0: {watch[3][7] =' ';watch[2][9] ='*';}break;
 		case 5: {watch[2][9] =' ';watch[3][11]='*';}break;
 		case 10:{watch[3][11]=' ';watch[4][14]='*';}break; 
@@ -74,8 +71,7 @@ A         6
 		case 55:{watch[4][4] =' ';watch[3][7] ='*';}break;
 		default:; break;
 	}
-	switch(hour)
-	{
+	switch(hour) {
 		case 0 :{watch[4][8] =' ';watch[3][9] ='+';}break;
 		case 1 :{watch[3][9] =' ';watch[4][10]='+';}break;
 		case 2 :{watch[4][10]=' ';watch[4][12]='+';}break; 
@@ -92,16 +88,14 @@ A         6
 	}
 }
 
-void showGraphicalClock()
-{		
+void showGraphicalClock() {
 	for(auto c : watch)
 	{
 		cout << c << "\x0a";
 	}
 }
 
-void showFormattedTime(int h, int m, int s)
-{
+void showFormattedTime(int h, int m, int s) {
 	// hours
 	if(h < 10) { cout <<"\x0A     " <<'0' <<h <<":"; }
 	else { cout <<"\x0A     " << h << ":"; }
@@ -113,25 +107,19 @@ void showFormattedTime(int h, int m, int s)
 	else { cout << s << "\x0A"; }
 }
 
-void clearScreen()
-{
+void clearScreen() {
 	for(unsigned i=0; i!=150; ++i)
 	{
 		cout << "\x0A";
 	}
 }
 
-int main(void)
-{
-	while(1)
-	{
+int main(void) {
+	while(1) {
 		unsigned h=0,m=0,s=0;
-		for(;h != 12; ++h)
-		{
-			for(;m != 60; ++m)
-			{
-				for(; s != 60; ++s)
-				{
+		for(;h != 12; ++h){
+			for(;m != 60; ++m){
+				for(; s != 60; ++s){
 					clearScreen();
 					updateGraphicalClock(h,m,s);
 					showGraphicalClock();
